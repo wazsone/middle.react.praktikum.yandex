@@ -1,5 +1,5 @@
 import React from "react";
-import style from "./ChatPreviewItem.module.css";
+import "./ChatPreviewItem.css";
 
 export interface IChatPreviewData {
     icon: string;
@@ -15,14 +15,18 @@ interface IProps {
 
 export const ChatPreviewItem: React.FC<IProps> = ({ data }) => {
     return (
-        <div className={style.item}>
-            <img className={style.avatar} src={data.icon} alt="Avatar" />
-            <div className={style.text_container}>
-                <div className={style.name_date}>
+        <div className="flex chat-preview-item">
+            <img
+                className="margin-left-4px chat-preview-item-avatar"
+                src={data.icon}
+                alt="Avatar"
+            />
+            <div className="flex-space-between margin-left-4px chat-preview-item-text-container">
+                <div className="flex-space-between margin-top-4px">
                     <span>{`${data.name}`}</span>
                     <span>{`${data.date.toLocaleDateString("ru")}`}</span>
                 </div>
-                <div className={style.author_message}>
+                <div className="chat-preview-item-author-message margin-bottom-4px">
                     <span>{`${data.author}: `}</span>
                     <span>{`${data.message}`}</span>
                 </div>

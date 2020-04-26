@@ -1,0 +1,23 @@
+.chat-preview-item {
+    align-items: center;
+    height: 50px;
+    width: 350px;
+}
+
+.chat-preview-item-avatar {
+    height: 100%;
+    max-width: 20%;
+    float: left;
+}
+
+.chat-preview-item-text-container {
+    width: 80%;
+    height: 100%;
+    flex-direction: column;
+}
+
+.chat-preview-item-author-message {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

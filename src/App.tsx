@@ -4,6 +4,7 @@ import {
     ChatPreviewItem,
 } from "./components/ChatPreviewItem";
 import logo from "./img/logo.png";
+import "./styles/common.css";
 
 // test data
 const testData: IChatPreviewData = {
