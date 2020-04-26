@@ -1,26 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import {
+    IChatPreviewData,
+    ChatPreviewItem,
+} from "./components/ChatPreviewItem";
+import logo from "./img/logo.png";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+// test data
+const testData: IChatPreviewData = {
+    icon: logo,
+    name: "Group Chat",
+    date: new Date(),
+    author: "Ruslan",
+    message: "Hello World! I am going to use all this line! Why not?",
+};
+
+const App: React.FC = () => {
+    return <ChatPreviewItem data={testData} />;
+};
 
 export default App;
