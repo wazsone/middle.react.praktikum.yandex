@@ -1,6 +1,6 @@
 .chat-preview-item {
     align-items: center;
-    height: 50px;
+    height: 55px;
     width: 350px;
 }
 
@@ -20,4 +20,17 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.chat-preview-item-name {
+    font-weight: 900;
+}
+
+.chat-preview-item-date {
+    font-size: small;
+    color: gray;
+}
+
+.chat-preview-item-author {
+    color: cadetblue;
 }

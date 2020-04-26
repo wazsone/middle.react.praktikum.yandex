@@ -15,19 +15,21 @@ interface IProps {
 
 export const ChatPreviewItem: React.FC<IProps> = ({ data }) => {
     return (
-        <div className="flex chat-preview-item">
+        <div className="flex margin-top-8px chat-preview-item">
             <img
-                className="margin-left-4px chat-preview-item-avatar"
+                className="margin-left-8px chat-preview-item-avatar"
                 src={data.icon}
                 alt="Avatar"
             />
-            <div className="flex-space-between margin-left-4px chat-preview-item-text-container">
-                <div className="flex-space-between margin-top-4px">
-                    <span>{`${data.name}`}</span>
-                    <span>{`${data.date.toLocaleDateString("ru")}`}</span>
+            <div className="flex-space-between margin-left-8px chat-preview-item-text-container">
+                <div className="flex-space-between margin-top-8px">
+                    <span className="chat-preview-item-name">{`${data.name}`}</span>
+                    <span className="chat-preview-item-date">{`${data.date
+                        .toLocaleDateString("ru")
+                        .replace(/\./g, "/")}`}</span>
                 </div>
-                <div className="chat-preview-item-author-message margin-bottom-4px">
-                    <span>{`${data.author}: `}</span>
+                <div className="chat-preview-item-author-message margin-bottom-8px">
+                    <span className="chat-preview-item-author">{`${data.author}: `}</span>
                     <span>{`${data.message}`}</span>
                 </div>
             </div>
