@@ -20,6 +20,7 @@
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "eslint --fix",
       "prettier --tab-width 4 --write"
     ]
   },
@@ -30,7 +31,18 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "plugins": [
+      "react"
+    ],
+    "extends": [
+      "react-app",
+      "eslint:recommended",
+      "plugin:react/recommended"
+    ],
+    "rules": {
+      "react/prop-types": 0,
+      "no-unused-vars": [2, {"vars": "all", "args": "all"}]
+    }
   },
   "browserslist": {
     "production": [
