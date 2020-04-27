@@ -1,11 +1,9 @@
 .chat-preview-item {
     align-items: center;
     height: 55px;
-    width: 350px;
 }
 
 .chat-preview-item-avatar {
-    height: 100%;
     max-width: 20%;
     float: left;
 }
