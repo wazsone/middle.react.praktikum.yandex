@@ -1,7 +1,8 @@
 {
   "name": "react-messenger",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "homepage": "https://wazsone.github.io/middle.react.praktikum.yandex",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -28,7 +29,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "plugins": [
@@ -41,7 +44,13 @@
     ],
     "rules": {
       "react/prop-types": 0,
-      "no-unused-vars": [2, {"vars": "all", "args": "all"}]
+      "no-unused-vars": [
+        2,
+        {
+          "vars": "all",
+          "args": "all"
+        }
+      ]
     }
   },
   "browserslist": {
@@ -60,5 +69,8 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
+  },
+  "devDependencies": {
+    "gh-pages": "^2.2.0"
   }
 }
