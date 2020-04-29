@@ -1,12 +1,12 @@
 import React from "react";
 import { IChatPreviewItem, Item } from "./Item/Item";
-import "./List.css";
+import "./Preview.css";
 
 interface IProps {
     data: IChatPreviewItem[];
 }
 
-export const List: React.FC<IProps> = ({ data }) => {
+export const Preview: React.FC<IProps> = ({ data }) => {
     const renderItems = () => {
         return data
             .sort((a, b) => b.date.getTime() - a.date.getTime())
