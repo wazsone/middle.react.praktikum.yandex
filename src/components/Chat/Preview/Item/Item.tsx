@@ -1,5 +1,6 @@
 import React from "react";
 import "./Item.css";
+import { Avatar } from "./Avatar/Avatar";
 
 export interface IChatPreviewItem {
     icon: string;
@@ -18,11 +19,7 @@ export const Item: React.FC<IChatPreviewItem> = ({
 }) => {
     return (
         <div className="flex margin-top-8px full-width chat-preview-item">
-            <img
-                className="margin-left-8px full-height chat-preview-item-avatar"
-                src={icon}
-                alt="Avatar"
-            />
+            <Avatar avatarUrl={icon} userName={author} />
             <div className="flex-space-between margin-left-8px chat-preview-item-text-container">
                 <div className="flex-space-between margin-top-8px">
                     <span className="chat-preview-item-name">{`${name}`}</span>
