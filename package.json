@@ -20,7 +20,7 @@
     "typescript": "^3.7.5"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+    "src/**/*.{js,jsx,ts,tsx,json,md}": [
       "eslint --fix",
       "prettier --tab-width 4 --write"
     ]
@@ -51,7 +51,8 @@
           "args": "all"
         }
       ]
-    }
+    },
+    "parser": "babel-eslint"
   },
   "browserslist": {
     "production": [
@@ -71,6 +72,7 @@
     }
   },
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
     "gh-pages": "^2.2.0"
   }
 }
