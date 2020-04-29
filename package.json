@@ -51,8 +51,7 @@
           "args": "all"
         }
       ]
-    },
-    "parser": "babel-eslint"
+    }
   },
   "browserslist": {
     "production": [
@@ -72,7 +71,6 @@
     }
   },
   "devDependencies": {
-    "babel-eslint": "^10.1.0",
     "gh-pages": "^2.2.0"
   }
 }
