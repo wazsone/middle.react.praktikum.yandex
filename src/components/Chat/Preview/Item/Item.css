@@ -1,6 +1,11 @@
 .chat-preview-item {
+    padding: 8px;
     align-items: center;
     height: 55px;
+}
+
+.chat-preview-item-selected {
+    background: lightgray;
 }
 
 .chat-preview-item-text-container {

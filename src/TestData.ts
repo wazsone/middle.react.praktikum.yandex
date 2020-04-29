@@ -1,11 +1,18 @@
 import logo from "./img/logo.png";
-import { IChatPreviewItem } from "./components/Chat/Preview/Item/Item";
 
 const randomDate = (start: Date, end: Date) => {
     return new Date(
         start.getTime() + Math.random() * (end.getTime() - start.getTime())
     );
 };
+
+export interface IChatPreviewItem {
+    icon: string;
+    name: string;
+    date: Date;
+    author: string;
+    message: string;
+}
 
 // test data
 export const testData: IChatPreviewItem[] = [
