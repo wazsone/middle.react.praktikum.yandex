@@ -49,22 +49,29 @@ export interface IChatGroup {
     messages: IMessage[];
 }
 
-const generateMessage = (user: IRandomUser): IMessage => {
+const generateMessage = async (
+    user: IRandomUser,
+    rndMsgs: string[]
+): Promise<IMessage> => {
+    const message = rndMsgs[Math.floor(Math.random() * rndMsgs.length)];
     return {
         icon: user.picture.thumbnail,
         author: `${user.name.last} ${user.name.first}`,
-        message: "Hello World! I am going to use all this line! Why not?",
+        message: message,
         date: randomDate(new Date(2019, 0, 1), new Date()),
     };
 };
 
-const generateGroupChat = (users: IRandomUser[]): IChatGroup => {
+const generateGroupChat = async (
+    users: IRandomUser[],
+    rndMsgs: string[]
+): Promise<IChatGroup> => {
     const messages: IMessage[] = [];
-    const messagesAmount = Math.ceil(5 + Math.random() * 5);
+    const messagesAmount = Math.ceil(25 + Math.random() * 5);
     let rndUsers = Object.assign([], users);
     for (let count = 0; count < messagesAmount; count++) {
         const usrId = Math.floor(Math.random() * rndUsers.length);
-        messages.push(generateMessage(rndUsers[usrId]));
+        messages.push(await generateMessage(rndUsers[usrId], rndMsgs));
         if (rndUsers.length === 1) {
             rndUsers = Object.assign([], users);
         } else {
@@ -77,12 +84,20 @@ const generateGroupChat = (users: IRandomUser[]): IChatGroup => {
     };
 };
 
+const getRandomText = () => {
+    const url = `https://baconipsum.com/api/?type=all-meat&paras=25&start-with-lorem=1`;
+    return fetch(url)
+        .then((res) => res.json())
+        .then((json) => json);
+};
+
 export const generateChatData = async (): Promise<IChatGroup[]> => {
+    const rndMsgs = await getRandomText();
     const users = await getRandomUsers();
     const chatsAmount = Math.ceil(10 + Math.random() * 10);
     const chats: IChatGroup[] = [];
     for (let count = 0; count < chatsAmount; count++) {
-        chats.push(generateGroupChat(users));
+        chats.push(await generateGroupChat(users, rndMsgs));
     }
     return chats;
 };
