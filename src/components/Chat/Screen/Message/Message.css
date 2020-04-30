@@ -1,0 +1,8 @@
+.screen-message-item {
+    align-items: flex-start;
+    padding: 8px;
+}
+
+.screen-message-text {
+    flex-direction: column;
+}
