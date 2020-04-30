@@ -8,8 +8,9 @@
 }
 
 .chat-screen {
+    flex-direction: column;
     flex-basis: 0;
     flex-grow: 4;
-    align-items: center;
-    justify-content: center;
+    margin: 0 49px 0 86px;
+    overflow-y: scroll;
 }
