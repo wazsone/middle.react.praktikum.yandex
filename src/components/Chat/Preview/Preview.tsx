@@ -23,16 +23,14 @@ export class Preview extends React.Component<IProps, IState> {
     private renderItems = () => {
         const { data } = this.props;
         const { activeItemId } = this.state;
-        return data
-            .sort((a, b) => b.date.getTime() - a.date.getTime())
-            .map((itemData, id) => (
-                <Item
-                    key={id}
-                    isActive={id === activeItemId}
-                    selectItem={() => this.selectItem(id)}
-                    {...itemData}
-                />
-            ));
+        return data.map((itemData, id) => (
+            <Item
+                key={id}
+                isActive={id === activeItemId}
+                selectItem={() => this.selectItem(id)}
+                {...itemData}
+            />
+        ));
     };
     render() {
         return (
