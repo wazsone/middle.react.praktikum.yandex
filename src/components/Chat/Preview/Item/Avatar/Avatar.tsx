@@ -9,7 +9,7 @@ export interface IProps {
 export const Avatar: React.FC<IProps> = ({ avatarUrl, userName }) => {
     return (
         <img
-            className="full-height chat-preview-item-avatar"
+            className="chat-preview-item-avatar"
             src={avatarUrl}
             alt={userName}
         />
