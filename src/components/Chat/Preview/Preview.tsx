@@ -5,18 +5,22 @@ import { IChatPreviewItem } from "../../../TestData";
 
 interface IProps {
     data: IChatPreviewItem[];
-    activeItem: number;
+    activeItemId: number;
     selectItem: (itemId: number) => void;
 }
 
-export const Preview: React.FC<IProps> = ({ data, selectItem, activeItem }) => {
+export const Preview: React.FC<IProps> = ({
+    data,
+    selectItem,
+    activeItemId,
+}) => {
     const renderItems = () => {
         return data
             .sort((a, b) => b.date.getTime() - a.date.getTime())
             .map((itemData, id) => (
                 <Item
                     key={id}
-                    isActive={id === activeItem}
+                    isActive={id === activeItemId}
                     selectItem={() => selectItem(id)}
                     {...itemData}
                 />

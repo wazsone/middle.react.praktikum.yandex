@@ -6,17 +6,17 @@ import "./Chat.css";
 
 interface IState {
     chats: IChatGroup[];
-    activeChat: number;
+    activeChatId: number;
 }
 
 export class Chat extends React.Component<{}, IState> {
     readonly state: IState = {
         chats: [],
-        activeChat: -1,
+        activeChatId: -1,
     };
 
     private selectChat = (chatId: number) => {
-        this.setState({ activeChat: chatId });
+        this.setState({ activeChatId: chatId });
     };
 
     componentDidMount() {
@@ -34,16 +34,17 @@ export class Chat extends React.Component<{}, IState> {
     };
 
     render() {
-        const { chats, activeChat } = this.state;
+        const { chats, activeChatId } = this.state;
         const messages =
-            activeChat >= 0 && chats.length > 0
-                ? chats[activeChat].messages
+            activeChatId >= 0 && chats.length > 0
+                ? chats[activeChatId].messages
                 : [];
+
         return (
             <div className="flex chat">
                 <Preview
                     data={this.preparePreviewData()}
-                    activeItem={activeChat}
+                    activeItemId={activeChatId}
                     selectItem={this.selectChat}
                 />
                 <div className="flex chat-screen">
