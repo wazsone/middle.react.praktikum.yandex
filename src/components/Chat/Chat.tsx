@@ -25,13 +25,12 @@ export class Chat extends React.Component<{}, IState> {
 
     private preparePreviewData = (): IChatPreviewItem[] => {
         const { chats } = this.state;
-        const data = chats.map((chat) => {
+        return chats.map((chat) => {
             return {
                 name: chat.name,
                 ...chat.messages[chat.messages.length - 1],
             };
         });
-        return data.sort((a, b) => b.date.getTime() - a.date.getTime());
     };
 
     render() {

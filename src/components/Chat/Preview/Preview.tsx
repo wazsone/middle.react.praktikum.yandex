@@ -12,14 +12,16 @@ interface IProps {
 export class Preview extends React.Component<IProps> {
     private renderItems = () => {
         const { data, selectItem, activeItem } = this.props;
-        return data.map((itemData, id) => (
-            <Item
-                key={id}
-                isActive={id === activeItem}
-                selectItem={() => selectItem(id)}
-                {...itemData}
-            />
-        ));
+        return data
+            .sort((a, b) => b.date.getTime() - a.date.getTime())
+            .map((itemData, id) => (
+                <Item
+                    key={id}
+                    isActive={id === activeItem}
+                    selectItem={() => selectItem(id)}
+                    {...itemData}
+                />
+            ));
     };
     render() {
         return (
