@@ -38,7 +38,7 @@ export class Chat extends React.Component<{}, IState> {
         const messages =
             activeChat >= 0 && chats.length > 0
                 ? chats[activeChat].messages
-                : undefined;
+                : [];
         return (
             <div className="flex chat">
                 <Preview
@@ -47,10 +47,9 @@ export class Chat extends React.Component<{}, IState> {
                     selectItem={this.selectChat}
                 />
                 <div className="flex chat-screen">
-                    {messages &&
-                        messages.map((message, id) => (
-                            <Message key={id} {...message} />
-                        ))}
+                    {messages.map((message, id) => (
+                        <Message key={id} {...message} />
+                    ))}
                 </div>
             </div>
         );
