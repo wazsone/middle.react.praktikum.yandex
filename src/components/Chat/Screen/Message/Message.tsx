@@ -3,9 +3,12 @@ import { IMessage } from "../../../../TestData";
 import { Avatar } from "../../Preview/Item/Avatar/Avatar";
 import "./Message.css";
 
-interface IProps extends IMessage {}
-
-export const Message: React.FC<IProps> = ({ icon, author, message, date }) => {
+export const Message: React.FC<IMessage> = ({
+    icon,
+    author,
+    message,
+    date,
+}) => {
     return (
         <div className="flex screen-message-item">
             <Avatar avatarUrl={icon} userName={author} />
