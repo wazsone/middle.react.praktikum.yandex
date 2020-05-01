@@ -6,12 +6,6 @@ export interface IProps {
     userName: string;
 }
 
-export const Avatar: React.FC<IProps> = ({ avatarUrl, userName }) => {
-    return (
-        <img
-            className="chat-preview-item-avatar"
-            src={avatarUrl}
-            alt={userName}
-        />
-    );
-};
+export const Avatar: React.FC<IProps> = ({ avatarUrl, userName }) => (
+    <img className="chat-preview-item-avatar" src={avatarUrl} alt={userName} />
+);
