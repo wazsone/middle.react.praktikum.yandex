@@ -9,9 +9,8 @@ interface IProps {
     selectItem: (itemId: number) => void;
 }
 
-export class Preview extends React.Component<IProps> {
-    private renderItems = () => {
-        const { data, selectItem, activeItem } = this.props;
+export const Preview: React.FC<IProps> = ({ data, selectItem, activeItem }) => {
+    const renderItems = () => {
         return data
             .sort((a, b) => b.date.getTime() - a.date.getTime())
             .map((itemData, id) => (
@@ -23,9 +22,5 @@ export class Preview extends React.Component<IProps> {
                 />
             ));
     };
-    render() {
-        return (
-            <div className="flex chat-preview-list">{this.renderItems()}</div>
-        );
-    }
-}
+    return <div className="flex chat-preview-list">{renderItems()}</div>;
+};
