@@ -1,16 +1,11 @@
+import { IChatGroup } from "./components/Chat/types";
+import { IMessage } from "./components/Chat/Screen/Message/types";
+
 const randomDate = (start: Date, end: Date) => {
     return new Date(
         start.getTime() + Math.random() * (end.getTime() - start.getTime())
     );
 };
-
-export interface IChatPreviewItem {
-    icon: string;
-    name: string;
-    date: Date;
-    author: string;
-    message: string;
-}
 
 export interface IRandomUserName {
     title: string;
@@ -36,18 +31,6 @@ const getRandomUsers = () => {
         .then((res) => res.json())
         .then((json) => json.results);
 };
-
-export interface IMessage {
-    icon: string;
-    author: string;
-    message: string;
-    date: Date;
-}
-
-export interface IChatGroup {
-    name: string;
-    messages: IMessage[];
-}
 
 const generateMessage = async (
     user: IRandomUser,

@@ -1,7 +1,7 @@
 import React from "react";
-import "./Item.css";
 import { Avatar } from "./Avatar/Avatar";
-import { IChatPreviewItem } from "../../../../TestData";
+import { IChatPreviewItem } from "./types";
+import "./Item.css";
 
 interface IProps extends IChatPreviewItem {
     isActive: boolean;

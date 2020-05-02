@@ -1,6 +1,6 @@
 import React from "react";
-import { IMessage } from "../../../../TestData";
 import { Avatar } from "../../Preview/Item/Avatar/Avatar";
+import { IMessage } from "./types";
 import "./Message.css";
 
 export const Message: React.FC<IMessage> = ({

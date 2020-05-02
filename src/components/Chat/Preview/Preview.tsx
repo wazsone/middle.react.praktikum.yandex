@@ -1,7 +1,7 @@
 import React from "react";
 import { Item } from "./Item/Item";
+import { IChatPreviewItem } from "./Item/types";
 import "./Preview.css";
-import { IChatPreviewItem } from "../../../TestData";
 
 interface IProps {
     data: IChatPreviewItem[];

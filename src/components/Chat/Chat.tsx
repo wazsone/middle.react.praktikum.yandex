@@ -1,7 +1,9 @@
 import React from "react";
-import { generateChatData, IChatGroup, IChatPreviewItem } from "../../TestData";
+import { generateChatData } from "../../TestData";
 import { Preview } from "./Preview/Preview";
 import { Message } from "./Screen/Message/Message";
+import { IChatGroup } from "./types";
+import { IChatPreviewItem } from "./Preview/Item/types";
 import "./Chat.css";
 
 interface IState {
