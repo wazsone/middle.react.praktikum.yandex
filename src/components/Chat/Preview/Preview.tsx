@@ -5,8 +5,8 @@ import "./Preview.css";
 
 interface IProps {
     data: IChatPreviewItem[];
-    activeItemId: number;
-    selectItem: (itemId: number) => void;
+    activeItemId: string;
+    selectItem: (itemId: string) => void;
 }
 
 export const Preview: React.FC<IProps> = ({
@@ -17,11 +17,11 @@ export const Preview: React.FC<IProps> = ({
     const renderItems = () => {
         return data
             .sort((a, b) => b.date.getTime() - a.date.getTime())
-            .map((itemData, id) => (
+            .map((itemData) => (
                 <Item
-                    key={id}
-                    isActive={id === activeItemId}
-                    selectItem={() => selectItem(id)}
+                    key={itemData.id}
+                    isActive={itemData.id === activeItemId}
+                    selectItem={() => selectItem(itemData.id)}
                     {...itemData}
                 />
             ));

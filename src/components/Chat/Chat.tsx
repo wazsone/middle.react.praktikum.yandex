@@ -8,16 +8,16 @@ import "./Chat.css";
 
 interface IState {
     chats: IChatGroup[];
-    activeChatId: number;
+    activeChatId: string;
 }
 
 export class Chat extends React.Component<{}, IState> {
     readonly state: IState = {
         chats: [],
-        activeChatId: -1,
+        activeChatId: "",
     };
 
-    private selectChat = (chatId: number) => {
+    private selectChat = (chatId: string) => {
         this.setState({ activeChatId: chatId });
     };
 
@@ -29,6 +29,7 @@ export class Chat extends React.Component<{}, IState> {
         const { chats } = this.state;
         return chats.map((chat) => {
             return {
+                id: chat.id,
                 name: chat.name,
                 ...chat.messages[chat.messages.length - 1],
             };
@@ -37,10 +38,8 @@ export class Chat extends React.Component<{}, IState> {
 
     render() {
         const { chats, activeChatId } = this.state;
-        const messages =
-            activeChatId >= 0 && chats.length > 0
-                ? chats[activeChatId].messages
-                : [];
+        const activeChat = chats.find(({ id }) => id === activeChatId);
+        const messages = activeChat ? activeChat.messages : [];
 
         return (
             <div className="flex chat">

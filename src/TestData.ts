@@ -1,5 +1,6 @@
 import { IChatGroup } from "./components/Chat/types";
 import { IMessage } from "./components/Chat/Screen/Message/types";
+import shortid from "shortid";
 
 const randomDate = (start: Date, end: Date) => {
     return new Date(
@@ -62,6 +63,7 @@ const generateGroupChat = async (
         }
     }
     return {
+        id: shortid.generate(),
         name: "Group Chat",
         messages: messages.sort((a, b) => a.date.getTime() - b.date.getTime()),
     };
