@@ -1,32 +1,18 @@
 import React from "react";
-import { generateChatData } from "../../TestData";
 import { Preview } from "./Preview/Preview";
 import { Message } from "./Screen/Message/Message";
 import { IChatGroup } from "./types";
 import { IChatPreviewItem } from "./Preview/Item/types";
 import "./Chat.css";
+import { withState } from "./withState";
 
-interface IState {
+interface IProps {
     chats: IChatGroup[];
     activeChatId: string;
 }
 
-export class Chat extends React.Component<{}, IState> {
-    readonly state: IState = {
-        chats: [],
-        activeChatId: "",
-    };
-
-    private selectChat = (chatId: string) => {
-        this.setState({ activeChatId: chatId });
-    };
-
-    componentDidMount() {
-        generateChatData().then((chats) => this.setState({ chats: chats }));
-    }
-
-    private preparePreviewData = (): IChatPreviewItem[] => {
-        const { chats } = this.state;
+const Chat: React.FC<IProps> = ({ chats, activeChatId }) => {
+    const preparePreviewData = (): IChatPreviewItem[] => {
         return chats.map((chat) => {
             return {
                 id: chat.id,
@@ -35,25 +21,18 @@ export class Chat extends React.Component<{}, IState> {
             };
         });
     };
-
-    render() {
-        const { chats, activeChatId } = this.state;
-        const activeChat = chats.find(({ id }) => id === activeChatId);
-        const messages = activeChat ? activeChat.messages : [];
-
-        return (
-            <div className="flex chat">
-                <Preview
-                    data={this.preparePreviewData()}
-                    activeItemId={activeChatId}
-                    selectItem={this.selectChat}
-                />
-                <div className="flex chat-screen">
-                    {messages.map((message, id) => (
-                        <Message key={id} {...message} />
-                    ))}
-                </div>
+    const activeChat = chats.find(({ id }) => id === activeChatId);
+    const messages = activeChat ? activeChat.messages : [];
+    return (
+        <div className="flex chat">
+            <Preview data={preparePreviewData()} activeItemId={activeChatId} />
+            <div className="flex chat-screen">
+                {messages.map((message, id) => (
+                    <Message key={id} {...message} />
+                ))}
             </div>
-        );
-    }
-}
+        </div>
+    );
+};
+
+export default withState(Chat);

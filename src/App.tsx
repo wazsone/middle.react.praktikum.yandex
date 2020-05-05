@@ -1,9 +1,17 @@
 import React from "react";
-import { Chat } from "./components/Chat/Chat";
 import "./styles/common.css";
+import { Redirect, Route, Switch } from "react-router-dom";
+import Chat from "./components/Chat/Chat";
 
 const App: React.FC = () => {
-    return <Chat />;
+    return (
+        <Switch>
+            <Redirect exact from="/" to="/chat" />
+            <Redirect from="/middle.react.praktikum.yandex" to="/chat" />
+            <Route exact path="/chat" component={Chat} />
+            <Route path="/chat/:chatId" component={Chat} />
+        </Switch>
+    );
 };
 
 export default App;
