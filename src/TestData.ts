@@ -1,5 +1,4 @@
-import { IChatGroup } from "./components/Chat/types";
-import { IMessage } from "./components/Chat/Screen/Message/types";
+import { IChatGroup, IMessage, IUser } from "./components/Chat/types";
 import shortid from "shortid";
 
 const randomDate = (start: Date, end: Date) => {
@@ -33,21 +32,29 @@ const getRandomUsers = () => {
         .then((json) => json.results);
 };
 
+const generateUsers = async () => {
+    const users = await getRandomUsers();
+    return users.map((user: IRandomUser) => ({
+        id: shortid.generate(),
+        userName: `${user.name.last} ${user.name.first}`,
+        avatar: user.picture.thumbnail,
+    }));
+};
+
 const generateMessage = async (
-    user: IRandomUser,
+    user: IUser,
     rndMsgs: string[]
 ): Promise<IMessage> => {
     const message = rndMsgs[Math.floor(Math.random() * rndMsgs.length)];
     return {
-        icon: user.picture.thumbnail,
-        author: `${user.name.last} ${user.name.first}`,
+        user: user,
         message: message,
         date: randomDate(new Date(2019, 0, 1), new Date()),
     };
 };
 
 const generateGroupChat = async (
-    users: IRandomUser[],
+    users: IUser[],
     rndMsgs: string[]
 ): Promise<IChatGroup> => {
     const messages: IMessage[] = [];
@@ -78,7 +85,7 @@ const getRandomText = () => {
 
 export const generateChatData = async (): Promise<IChatGroup[]> => {
     const rndMsgs = await getRandomText();
-    const users = await getRandomUsers();
+    const users = await generateUsers();
     const chatsAmount = Math.ceil(10 + Math.random() * 10);
     const chats: IChatGroup[] = [];
     for (let count = 0; count < chatsAmount; count++) {

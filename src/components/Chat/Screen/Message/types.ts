@@ -1,6 +1,5 @@
-export interface IMessage {
+import { IMessage } from "../../types";
+
+export interface IMessageItem extends IMessage {
     icon: string;
-    author: string;
-    message: string;
-    date: Date;
 }

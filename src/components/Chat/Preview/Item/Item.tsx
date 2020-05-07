@@ -11,7 +11,7 @@ export const Item: React.FC<IProps> = ({
     icon,
     name,
     date,
-    author,
+    userName,
     message,
     isActive,
 }) => {
@@ -22,7 +22,7 @@ export const Item: React.FC<IProps> = ({
                 isActive ? "chat-preview-item-selected" : ""
             }`}
         >
-            <Avatar avatarUrl={icon} userName={author} />
+            <Avatar avatarUrl={icon} userName={userName} />
             <div className="flex-space-between margin-left-8px chat-preview-item-text-container">
                 <div className="flex-space-between margin-top-8px">
                     <span className="chat-preview-item-name">{`${name}`}</span>
@@ -31,7 +31,7 @@ export const Item: React.FC<IProps> = ({
                         .replace(/\./g, "/")}`}</span>
                 </div>
                 <div className="chat-preview-item-author-message margin-bottom-8px">
-                    <span className="chat-preview-item-author">{`${author}: `}</span>
+                    <span className="chat-preview-item-author">{`${userName}: `}</span>
                     <span>{`${message}`}</span>
                 </div>
             </div>

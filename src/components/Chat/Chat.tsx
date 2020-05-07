@@ -1,10 +1,10 @@
 import React from "react";
 import { Preview } from "./Preview/Preview";
-import { Message } from "./Screen/Message/Message";
-import { IChatGroup } from "./types";
+import { IChatGroup, IMessage } from "./types";
 import { IChatPreviewItem } from "./Preview/Item/types";
 import "./Chat.css";
 import { withState } from "./withState";
+import { Message } from "./Screen/Message/Message";
 
 interface IProps {
     chats: IChatGroup[];
@@ -14,10 +14,13 @@ interface IProps {
 const Chat: React.FC<IProps> = ({ chats, activeChatId }) => {
     const preparePreviewData = (): IChatPreviewItem[] => {
         return chats.map((chat) => {
+            const lastMessage = chat.messages[chat.messages.length - 1];
             return {
                 id: chat.id,
+                icon: lastMessage.user.avatar,
                 name: chat.name,
-                ...chat.messages[chat.messages.length - 1],
+                userName: lastMessage.user.userName,
+                ...(lastMessage as Omit<IMessage, "user">),
             };
         });
     };
@@ -27,8 +30,12 @@ const Chat: React.FC<IProps> = ({ chats, activeChatId }) => {
         <div className="flex chat">
             <Preview data={preparePreviewData()} activeItemId={activeChatId} />
             <div className="flex chat-screen">
-                {messages.map((message, id) => (
-                    <Message key={id} {...message} />
+                {messages.map((message) => (
+                    <Message
+                        key={`${message.user.id}${message.date.getTime()}`}
+                        icon={message.user.avatar}
+                        {...message}
+                    />
                 ))}
             </div>
         </div>
