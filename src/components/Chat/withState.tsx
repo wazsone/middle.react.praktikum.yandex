@@ -25,6 +25,13 @@ export const withState = (WrappedComponent: React.ComponentType<any>) => {
                     this.setState({ chats: data })
                 );
             }
+            const { match, history } = this.props;
+            const isChatExist = chats.some(
+                ({ id }) => id === match.params.chatId
+            );
+            if (match.params.chatId && !isChatExist) {
+                history.push("/");
+            }
         }
         render() {
             const chatId = this.props.match.params.chatId ?? "";
