@@ -26,17 +26,23 @@ const Chat: React.FC<IProps> = ({ chats, activeChatId }) => {
     };
     const activeChat = chats.find(({ id }) => id === activeChatId);
     const messages = activeChat ? activeChat.messages : [];
+    let previousUser = "";
     return (
         <div className="flex chat">
             <Preview data={preparePreviewData()} activeItemId={activeChatId} />
             <div className="flex chat-screen">
-                {messages.map((message) => (
-                    <Message
-                        key={`${message.user.id}${message.date.getTime()}`}
-                        icon={message.user.avatar}
-                        {...message}
-                    />
-                ))}
+                {messages.map((message) => {
+                    const inRow = String(previousUser) === message.user.id;
+                    previousUser = message.user.id;
+                    return (
+                        <Message
+                            key={`${message.user.id}${message.date.getTime()}`}
+                            icon={message.user.avatar}
+                            isInRow={inRow}
+                            {...message}
+                        />
+                    );
+                })}
             </div>
         </div>
     );

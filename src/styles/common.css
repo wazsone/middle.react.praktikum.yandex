@@ -31,3 +31,7 @@
     color: inherit;
     text-decoration: inherit;
 }
+
+.hidden {
+    visibility: hidden;
+}

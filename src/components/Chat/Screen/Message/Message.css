@@ -3,6 +3,16 @@
     padding: 8px;
 }
 
+.screen-message-in-row-item {
+    align-items: flex-start;
+    padding: 0 8px 8px 8px;
+}
+
 .screen-message-text {
     flex-direction: column;
+}
+
+.screen-message-in-row-name {
+    height: 0;
+    padding-top: 0;
 }
