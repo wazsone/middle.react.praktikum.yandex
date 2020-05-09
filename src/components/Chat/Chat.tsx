@@ -4,6 +4,7 @@ import { IChatGroup, IMessage } from "./types";
 import { IChatPreviewItem } from "./Preview/Item/types";
 import "./Chat.css";
 import { withState } from "./withState";
+import { DateSeparator } from "./Screen/DateSeparator/DateSeparator";
 import { Message } from "./Screen/Message/Message";
 
 interface IProps {
@@ -24,26 +25,36 @@ const Chat: React.FC<IProps> = ({ chats, activeChatId }) => {
             };
         });
     };
-    const activeChat = chats.find(({ id }) => id === activeChatId);
-    const messages = activeChat ? activeChat.messages : [];
-    let previousUser = "";
+    const renderChatMessages = () => {
+        const activeChat = chats.find(({ id }) => id === activeChatId);
+        const messages = activeChat ? activeChat.messages : [];
+        let previousUser = "";
+        let previousDate: number = new Date(0).setHours(0, 0, 0, 0);
+        return messages.map((message) => {
+            const inRow = String(previousUser) === message.user.id;
+            previousUser = message.user.id;
+            const msgDate = new Date(message.date).setHours(0, 0, 0, 0);
+            const addDateSeparator = previousDate !== msgDate;
+            previousDate = msgDate;
+            return (
+                <>
+                    {addDateSeparator ? (
+                        <DateSeparator date={message.date} />
+                    ) : undefined}
+                    <Message
+                        key={`${message.user.id}${message.date.getTime()}`}
+                        icon={message.user.avatar}
+                        isInRow={!addDateSeparator && inRow}
+                        {...message}
+                    />
+                </>
+            );
+        });
+    };
     return (
         <div className="flex chat">
             <Preview data={preparePreviewData()} activeItemId={activeChatId} />
-            <div className="flex chat-screen">
-                {messages.map((message) => {
-                    const inRow = String(previousUser) === message.user.id;
-                    previousUser = message.user.id;
-                    return (
-                        <Message
-                            key={`${message.user.id}${message.date.getTime()}`}
-                            icon={message.user.avatar}
-                            isInRow={inRow}
-                            {...message}
-                        />
-                    );
-                })}
-            </div>
+            <div className="flex chat-screen">{renderChatMessages()}</div>
         </div>
     );
 };

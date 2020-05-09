@@ -37,9 +37,9 @@ export const Message: React.FC<IProps> = ({
                     } flex-space-between`}
                 >
                     <span>{`${message}`}</span>
-                    <span className="chat-preview-item-date">{`${date
-                        .toLocaleDateString("ru")
-                        .replace(/\./g, "/")}`}</span>
+                    <span className="chat-preview-item-date">
+                        {date.toLocaleTimeString("ru")}
+                    </span>
                 </div>
             </div>
         </div>

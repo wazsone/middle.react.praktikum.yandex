@@ -7,6 +7,13 @@ const randomDate = (start: Date, end: Date) => {
     );
 };
 
+const setRandomHours = (date: Date) => {
+    const h = Math.floor(Math.random() * 23);
+    const m = Math.floor(Math.random() * 59);
+    const s = Math.floor(Math.random() * 59);
+    return new Date(date.setHours(h, m, s));
+};
+
 export interface IRandomUserName {
     title: string;
     first: string;
@@ -43,13 +50,14 @@ const generateUsers = async () => {
 
 const generateMessage = async (
     user: IUser,
-    rndMsgs: string[]
+    rndMsgs: string[],
+    date: Date
 ): Promise<IMessage> => {
     const message = rndMsgs[Math.floor(Math.random() * rndMsgs.length)];
     return {
         user: user,
         message: message,
-        date: randomDate(new Date(2019, 0, 1), new Date()),
+        date: setRandomHours(date),
     };
 };
 
@@ -59,10 +67,15 @@ const generateGroupChat = async (
 ): Promise<IChatGroup> => {
     const messages: IMessage[] = [];
     const messagesAmount = Math.ceil(25 + Math.random() * 5);
+    const messagesInDay = Math.ceil(2 + Math.random() * 4);
     let rndUsers = Object.assign([], users);
+    let date = randomDate(new Date(2019, 0, 0), new Date());
     for (let count = 0; count < messagesAmount; count++) {
         const usrId = Math.floor(Math.random() * rndUsers.length);
-        messages.push(await generateMessage(rndUsers[usrId], rndMsgs));
+        if (count % messagesInDay === 0) {
+            date = randomDate(new Date(2019, 0, 0), new Date());
+        }
+        messages.push(await generateMessage(rndUsers[usrId], rndMsgs, date));
         if (rndUsers.length === 1) {
             rndUsers = Object.assign([], users);
         } else {
