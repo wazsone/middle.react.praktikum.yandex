@@ -18,7 +18,7 @@ const Chat: React.FC<IProps> = ({ chats, activeChatId }) => {
             const lastMessage = chat.messages[chat.messages.length - 1];
             return {
                 id: chat.id,
-                icon: lastMessage.user.avatar,
+                avatar: lastMessage.user.avatar,
                 name: chat.name,
                 userName: lastMessage.user.userName,
                 ...(lastMessage as Omit<IMessage, "user">),
@@ -43,7 +43,7 @@ const Chat: React.FC<IProps> = ({ chats, activeChatId }) => {
                     ) : undefined}
                     <Message
                         key={`${message.user.id}${message.date.getTime()}`}
-                        icon={message.user.avatar}
+                        avatar={message.user.avatar}
                         isInRow={!addDateSeparator && inRow}
                         {...message}
                     />

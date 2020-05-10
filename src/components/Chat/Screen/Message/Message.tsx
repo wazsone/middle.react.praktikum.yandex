@@ -8,7 +8,7 @@ interface IProps extends IMessageItem {
 }
 
 export const Message: React.FC<IProps> = ({
-    icon,
+    avatar,
     user,
     message,
     date,
@@ -20,7 +20,11 @@ export const Message: React.FC<IProps> = ({
                 isInRow ? "screen-message-in-row-item" : "screen-message-item"
             }`}
         >
-            <Avatar avatarUrl={icon} userName={user.userName} hide={isInRow} />
+            <Avatar
+                avatarUrl={avatar}
+                userName={user.userName}
+                hide={isInRow}
+            />
             <div className="margin-left-8px full-width flex screen-message-text">
                 <span
                     className={

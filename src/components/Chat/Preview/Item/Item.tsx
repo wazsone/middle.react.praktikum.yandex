@@ -8,7 +8,7 @@ interface IProps extends IChatPreviewItem {
 }
 
 export const Item: React.FC<IProps> = ({
-    icon,
+    avatar,
     name,
     date,
     userName,
@@ -22,7 +22,7 @@ export const Item: React.FC<IProps> = ({
                 isActive ? "chat-preview-item-selected" : ""
             }`}
         >
-            <Avatar avatarUrl={icon} userName={userName} />
+            <Avatar avatarUrl={avatar} userName={userName} />
             <div className="flex-space-between margin-left-8px chat-preview-item-text-container">
                 <div className="flex-space-between margin-top-8px">
                     <span className="chat-preview-item-name">{`${name}`}</span>

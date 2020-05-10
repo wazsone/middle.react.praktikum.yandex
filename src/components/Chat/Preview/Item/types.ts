@@ -1,6 +1,6 @@
 export interface IChatPreviewItem {
     id: string;
-    icon: string;
+    avatar?: string;
     name: string;
     date: Date;
     userName: string;
