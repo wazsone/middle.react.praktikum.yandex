@@ -1,5 +1,5 @@
 import React from "react";
-import { Avatar } from "../../Preview/Item/Avatar/Avatar";
+import { Avatar } from "../../../Avatar/Avatar";
 import { IMessageItem } from "./types";
 import "./Message.css";
 

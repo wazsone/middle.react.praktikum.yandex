@@ -1,5 +1,5 @@
 import React from "react";
-import { Avatar } from "./Avatar/Avatar";
+import { Avatar } from "../../../Avatar/Avatar";
 import { IChatPreviewItem } from "./types";
 import "./Item.css";
 
