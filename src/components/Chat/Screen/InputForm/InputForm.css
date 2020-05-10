@@ -1,0 +1,18 @@
+.chat-screen-input {
+    width: 75%;
+    align-self: center;
+    margin: 8px;
+}
+
+.chat-screen-input-form {
+    height: 40px;
+    width: 100%;
+    border-radius: 8px;
+    border-style: groove;
+}
+
+.chat-screen-send-buttom {
+    font-weight: bolder;
+    border-radius: 8px;
+    color: cadetblue;
+}

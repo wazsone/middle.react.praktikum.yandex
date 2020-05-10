@@ -6,13 +6,23 @@ import "./Chat.css";
 import { withState } from "./withState";
 import { DateSeparator } from "./Screen/DateSeparator/DateSeparator";
 import { Message } from "./Screen/Message/Message";
+import { InputForm } from "./Screen/InputForm/InputForm";
 
-interface IProps {
+export interface IChatProps {
     chats: IChatGroup[];
     activeChatId: string;
+    onUserMessageChanged: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+    onMessageSent: () => void;
+    handleKeyDown: (e: React.KeyboardEvent<HTMLTextAreaElement>) => void;
 }
 
-const Chat: React.FC<IProps> = ({ chats, activeChatId }) => {
+const Chat: React.FC<IChatProps> = ({
+    chats,
+    activeChatId,
+    onUserMessageChanged,
+    onMessageSent,
+    handleKeyDown,
+}) => {
     const preparePreviewData = (): IChatPreviewItem[] => {
         return chats.map((chat) => {
             const lastMessage = chat.messages[chat.messages.length - 1];
@@ -51,10 +61,20 @@ const Chat: React.FC<IProps> = ({ chats, activeChatId }) => {
             );
         });
     };
+
+    const messages = renderChatMessages();
     return (
         <div className="flex chat">
             <Preview data={preparePreviewData()} activeItemId={activeChatId} />
-            <div className="flex chat-screen">{renderChatMessages()}</div>
+            <div className="flex chat-screen">
+                <div className="flex chat-screen-messages">{messages}</div>
+                <InputForm
+                    hide={messages.length === 0}
+                    onChange={onUserMessageChanged}
+                    onSend={onMessageSent}
+                    onKeyDown={handleKeyDown}
+                />
+            </div>
         </div>
     );
 };

@@ -96,13 +96,21 @@ const getRandomText = () => {
         .then((json) => json);
 };
 
-export const generateChatData = async (): Promise<IChatGroup[]> => {
+export const generateChatData = async (): Promise<
+    Record<string, IChatGroup>
+> => {
     const rndMsgs = await getRandomText();
     const users = await generateUsers();
     const chatsAmount = Math.ceil(10 + Math.random() * 10);
-    const chats: IChatGroup[] = [];
+    const chats: Record<string, IChatGroup> = {};
     for (let count = 0; count < chatsAmount; count++) {
-        chats.push(await generateGroupChat(users, rndMsgs));
+        const groupChat = await generateGroupChat(users, rndMsgs);
+        chats[groupChat.id] = groupChat;
     }
     return chats;
+};
+
+export const localUser: IUser = {
+    id: shortid.generate(),
+    userName: "User Name",
 };
