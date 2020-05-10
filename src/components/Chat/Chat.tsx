@@ -49,7 +49,10 @@ const Chat: React.FC<IChatProps> = ({
             return (
                 <>
                     {addDateSeparator ? (
-                        <DateSeparator date={message.date} />
+                        <DateSeparator
+                            key={`${message.date.getTime()}`}
+                            date={message.date}
+                        />
                     ) : undefined}
                     <Message
                         key={`${message.user.id}${message.date.getTime()}`}
