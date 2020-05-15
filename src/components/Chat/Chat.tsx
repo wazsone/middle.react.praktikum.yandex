@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Preview } from "./Preview/Preview";
 import { IChatGroup, IMessage } from "./types";
 import { IChatPreviewItem } from "./Preview/Item/types";
@@ -47,20 +47,16 @@ const Chat: React.FC<IChatProps> = ({
             const addDateSeparator = previousDate !== msgDate;
             previousDate = msgDate;
             return (
-                <>
+                <Fragment key={`${message.date.getTime()}`}>
                     {addDateSeparator ? (
-                        <DateSeparator
-                            key={`${message.date.getTime()}`}
-                            date={message.date}
-                        />
+                        <DateSeparator date={message.date} />
                     ) : undefined}
                     <Message
-                        key={`${message.user.id}${message.date.getTime()}`}
                         avatar={message.user.avatar}
                         isInRow={!addDateSeparator && inRow}
                         {...message}
                     />
-                </>
+                </Fragment>
             );
         });
     };
