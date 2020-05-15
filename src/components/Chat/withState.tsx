@@ -9,7 +9,6 @@ export const withState = (
 ) => {
     interface IState {
         chats: Record<string, IChatGroup>;
-        userMessage: string;
     }
     interface IMatchParams {
         chatId: string;
@@ -21,7 +20,6 @@ export const withState = (
     > {
         readonly state: IState = {
             chats: {},
-            userMessage: "",
         };
         componentDidMount() {
             const { chats } = this.state;
@@ -38,15 +36,11 @@ export const withState = (
             }
         }
 
-        onUserMessageChanged = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-            this.setState({ userMessage: e.target.value });
-        };
-
-        saveMessage = () => {
-            const { chats, userMessage } = this.state;
+        saveMessage = (newMessage: string) => {
+            const { chats } = this.state;
             const message: IMessage = {
                 user: localUser,
-                message: userMessage,
+                message: newMessage,
                 date: new Date(),
             };
             const { match } = this.props;
@@ -63,14 +57,6 @@ export const withState = (
             }
         };
 
-        handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-            const { key } = e;
-            if (key === "Enter") {
-                e.preventDefault();
-                this.saveMessage();
-            }
-        };
-
         render() {
             const chatId = this.props.match.params.chatId ?? "";
             const { chats } = this.state;
@@ -78,9 +64,7 @@ export const withState = (
                 <WrappedComponent
                     activeChatId={chatId}
                     chats={Object.values(chats)}
-                    onUserMessageChanged={this.onUserMessageChanged}
-                    onMessageSent={this.saveMessage}
-                    handleKeyDown={this.handleKeyDown}
+                    saveMessage={this.saveMessage}
                 />
             );
         }

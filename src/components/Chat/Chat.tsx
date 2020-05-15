@@ -11,18 +11,10 @@ import { InputForm } from "./Screen/InputForm/InputForm";
 export interface IChatProps {
     chats: IChatGroup[];
     activeChatId: string;
-    onUserMessageChanged: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
-    onMessageSent: () => void;
-    handleKeyDown: (e: React.KeyboardEvent<HTMLTextAreaElement>) => void;
+    saveMessage: (newMessage: string) => void;
 }
 
-const Chat: React.FC<IChatProps> = ({
-    chats,
-    activeChatId,
-    onUserMessageChanged,
-    onMessageSent,
-    handleKeyDown,
-}) => {
+const Chat: React.FC<IChatProps> = ({ chats, activeChatId, saveMessage }) => {
     const preparePreviewData = (): IChatPreviewItem[] => {
         return chats.map((chat) => {
             const lastMessage = chat.messages[chat.messages.length - 1];
@@ -69,9 +61,7 @@ const Chat: React.FC<IChatProps> = ({
                 <div className="flex chat-screen-messages">{messages}</div>
                 <InputForm
                     hide={messages.length === 0}
-                    onChange={onUserMessageChanged}
-                    onSend={onMessageSent}
-                    onKeyDown={handleKeyDown}
+                    saveMessage={saveMessage}
                 />
             </div>
         </div>

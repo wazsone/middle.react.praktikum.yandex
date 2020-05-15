@@ -40,7 +40,7 @@ export const Message: React.FC<IProps> = ({
                         isInRow ? "" : "margin-top-8px"
                     } flex-space-between`}
                 >
-                    <span>{`${message}`}</span>
+                    <div style={{ whiteSpace: "pre-wrap" }}>{`${message}`}</div>
                     <span className="margin-left-8px chat-preview-item-date">
                         {date.toLocaleTimeString("ru")}
                     </span>
