@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/middle.react.praktikum.yandex/static/css/main.991a39e6.chunk.css",
-    "main.js": "/middle.react.praktikum.yandex/static/js/main.f4c8ce2f.chunk.js",
-    "main.js.map": "/middle.react.praktikum.yandex/static/js/main.f4c8ce2f.chunk.js.map",
-    "runtime-main.js": "/middle.react.praktikum.yandex/static/js/runtime-main.5876ed40.js",
-    "runtime-main.js.map": "/middle.react.praktikum.yandex/static/js/runtime-main.5876ed40.js.map",
-    "static/js/2.c2cdfb41.chunk.js": "/middle.react.praktikum.yandex/static/js/2.c2cdfb41.chunk.js",
-    "static/js/2.c2cdfb41.chunk.js.map": "/middle.react.praktikum.yandex/static/js/2.c2cdfb41.chunk.js.map",
-    "index.html": "/middle.react.praktikum.yandex/index.html",
-    "precache-manifest.4d43d1c0ae3e836084fc7d3f0e74a587.js": "/middle.react.praktikum.yandex/precache-manifest.4d43d1c0ae3e836084fc7d3f0e74a587.js",
-    "service-worker.js": "/middle.react.praktikum.yandex/service-worker.js",
-    "static/css/main.991a39e6.chunk.css.map": "/middle.react.praktikum.yandex/static/css/main.991a39e6.chunk.css.map",
-    "static/js/2.c2cdfb41.chunk.js.LICENSE.txt": "/middle.react.praktikum.yandex/static/js/2.c2cdfb41.chunk.js.LICENSE.txt",
-    "static/media/logo.png": "/middle.react.praktikum.yandex/static/media/logo.737f1a01.png"
+    "main.css": "/react-messenger/static/css/main.d0fd3c7a.chunk.css",
+    "main.js": "/react-messenger/static/js/main.e77c2d37.chunk.js",
+    "main.js.map": "/react-messenger/static/js/main.e77c2d37.chunk.js.map",
+    "runtime-main.js": "/react-messenger/static/js/runtime-main.e659759f.js",
+    "runtime-main.js.map": "/react-messenger/static/js/runtime-main.e659759f.js.map",
+    "static/js/2.c2cdfb41.chunk.js": "/react-messenger/static/js/2.c2cdfb41.chunk.js",
+    "static/js/2.c2cdfb41.chunk.js.map": "/react-messenger/static/js/2.c2cdfb41.chunk.js.map",
+    "index.html": "/react-messenger/index.html",
+    "precache-manifest.ff9bee6ced1c2ad76b5eb26c3ee24080.js": "/react-messenger/precache-manifest.ff9bee6ced1c2ad76b5eb26c3ee24080.js",
+    "service-worker.js": "/react-messenger/service-worker.js",
+    "static/css/main.d0fd3c7a.chunk.css.map": "/react-messenger/static/css/main.d0fd3c7a.chunk.css.map",
+    "static/js/2.c2cdfb41.chunk.js.LICENSE.txt": "/react-messenger/static/js/2.c2cdfb41.chunk.js.LICENSE.txt",
+    "static/media/logo.png": "/react-messenger/static/media/logo.737f1a01.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.5876ed40.js",
+    "static/js/runtime-main.e659759f.js",
     "static/js/2.c2cdfb41.chunk.js",
-    "static/css/main.991a39e6.chunk.css",
-    "static/js/main.f4c8ce2f.chunk.js"
+    "static/css/main.d0fd3c7a.chunk.css",
+    "static/js/main.e77c2d37.chunk.js"
   ]
 }
