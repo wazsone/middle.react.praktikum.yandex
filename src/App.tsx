@@ -7,7 +7,7 @@ const App: React.FC = () => {
     return (
         <Switch>
             <Redirect exact from="/" to="/chat" />
-            <Redirect from="/middle.react.praktikum.yandex" to="/chat" />
+            <Redirect from="/react-messenger" to="/chat" />
             <Route exact path="/chat" component={Chat} />
             <Route path="/chat/:chatId" component={Chat} />
         </Switch>

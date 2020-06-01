@@ -1,3 +1,3 @@
 ## Homepage
 
-https://wazsone.github.io/middle.react.praktikum.yandex
+https://wazsone.github.io/react-messenger
